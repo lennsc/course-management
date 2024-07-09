@@ -16,7 +16,7 @@ import javax.swing.JMenuItem;
 public class App {
 
 	public static App INSTANCE;
-	private static final String WINDOW_TITLE = "Course Management";
+	private static final String WINDOW_TITLE = "Kursverwaltung";
 	private JFrame frame;
 
 	/**
