@@ -6,7 +6,6 @@ import courseManagement.Course;
 import courseManagement.CourseManagementFactory;
 import courseManagement.CourseType;
 import courseManagement.Introductory;
-import courseManagement.Student;
 import courseManagement.utils.TableView;
 
 public class CourseTableView extends TableView<Course> {
