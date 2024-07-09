@@ -1,2 +1,0 @@
-UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
