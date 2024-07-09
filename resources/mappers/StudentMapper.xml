@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="courseManagement.Student">
+  <select id="findById" parameterType="int" resultType="courseManagement.Student">
+    SELECT * FROM Student WHERE Id = #{id}
+  </select>
+  
+  <select id="findAll" resultType="courseManagement.Student">
+    SELECT * FROM Student
+  </select>
+  
+  <insert id="insert" parameterType="courseManagement.Student" useGeneratedKeys="true" keyProperty="id">
+    INSERT INTO Student (Name, Semester) VALUES (#{name}, #{semester})
+  </insert>
+  
+  <update id="update" parameterType="courseManagement.Student">
+    UPDATE Student SET Name=#{name}, Semester=#{semester} WHERE Id=#{id}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM Student WHERE Id=#{id}
+  </delete>
+</mapper>

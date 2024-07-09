@@ -1,0 +1,16 @@
+/**
+ * Register a column value converter.
+ * @implNote Before calling this method, a data vector needs to be set.
+ * @param columnIndex
+ * @param valueConverter
+ */
+protected void setColumnValueConverter(int columnIndex, Function<String, String> valueConverter) {
+	table.getColumnModel().getColumn(columnIndex).setCellRenderer(new DefaultTableCellRenderer() {
+		@Override
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+			Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+			setText(valueConverter.apply((String) value));
+			return c;
+		}
+	});
+}

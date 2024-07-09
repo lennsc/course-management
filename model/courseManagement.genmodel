@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/courseManagement/src-gen" creationIcons="false"
+    editDirectory="/courseManagement.edit/src-gen" editorDirectory="/courseManagement.editor/src-gen"
+    modelPluginID="courseManagement" modelName="CourseManagement" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="22.0"
+    copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>courseManagement.ecore</foreignModel>
+  <testsDirectory xsi:nil="true"/>
+  <genPackages prefix="CourseManagement" disposableProviderFactory="true" ecorePackage="courseManagement.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="courseManagement.ecore#//Grade">
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/A"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/B"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/C"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/D"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/E"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Grade/F"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="courseManagement.ecore#//Semester">
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/TWO"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/THREE"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/FOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/FIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Semester/SIX"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="courseManagement.ecore#//CourseType">
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//CourseType/INTRODUCTORY"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//CourseType/ADVANCED"/>
+    </genEnums>
+    <genClasses ecoreClass="courseManagement.ecore#//ServiceFacade">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/results"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/students"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/programs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/allCourses"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Result">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Result/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Result/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Result/id"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Student">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Student/semester"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Student/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Student/transcript"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Student/program"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Student/id"/>
+      <genOperations ecoreOperation="courseManagement.ecore#//Student/getLabel"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Program">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Program/label"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Program/enrolled"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Program/courses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Program/requiredCourses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Program/id"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="courseManagement.ecore#//Course">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/courseType"/>
+      <genOperations ecoreOperation="courseManagement.ecore#//Course/isElective"/>
+      <genOperations ecoreOperation="courseManagement.ecore#//Course/getLabel"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Advanced">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//Advanced/prereqs"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Introductory"/>
+    <genClasses ecoreClass="courseManagement.ecore#//CourseSet">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//CourseSet/elements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//CourseSet/id"/>
+      <genOperations ecoreOperation="courseManagement.ecore#//CourseSet/allPrereqs"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Identifiable">
+      <genOperations ecoreOperation="courseManagement.ecore#//Identifiable/getId"/>
+    </genClasses>
+    <genClasses ecoreClass="courseManagement.ecore#//Labeled">
+      <genOperations ecoreOperation="courseManagement.ecore#//Labeled/getLabel"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
