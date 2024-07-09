@@ -40,6 +40,7 @@ public class App {
 	 * Create the application layout and show students view.
 	 */
 	private App() {
+		// Initialize frame
 		frame = new JFrame();
 		frame.setTitle(WINDOW_TITLE);
 		frame.setBounds(100, 100, 800, 600);
