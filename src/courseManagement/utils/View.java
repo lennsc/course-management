@@ -43,7 +43,7 @@ public abstract class View extends JPanel {
 	 * Open the view inside a new dialog with standard minimum size.
 	 */
 	public void openDialog() {
-		openDialog(400, 200);
+		openDialog(400, 0);
 	}
 
 	/**

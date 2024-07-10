@@ -17,8 +17,8 @@ public class CourseTableView extends TableView<Course> {
 		
 		addButton.addActionListener(e -> {
 			Course course = CourseManagementFactory.eINSTANCE.createIntroductory();
-			CourseEditView courseEditView = new CourseEditView(repository, course, CrudAction.CREATE);
-			courseEditView.openDialog();
+			CourseTypeSelectionView view = new CourseTypeSelectionView(repository, course, CrudAction.CREATE);
+			view.openDialog();
 		});
 	}
 

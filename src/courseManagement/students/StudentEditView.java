@@ -14,6 +14,7 @@ import courseManagement.Course;
 import courseManagement.utils.CheckboxPanel;
 import courseManagement.utils.CrudAction;
 import courseManagement.utils.EditView;
+import courseManagement.utils.FlowAction;
 import courseManagement.utils.KeyValueItem;
 import courseManagement.utils.GenericRepository;
 
@@ -36,7 +37,7 @@ public class StudentEditView extends EditView {
 	 *                   or updated
 	 */
 	public StudentEditView(GenericRepository<Student> repository, Student student, CrudAction crudAction) {
-		super(crudAction == CrudAction.CREATE ? "Student hinzufügen" : "Student bearbeiten", crudAction);
+		super(crudAction == CrudAction.CREATE ? "Student hinzufügen" : "Student bearbeiten", crudAction, FlowAction.SAVE);
 		this.repository = repository;
 		this.crudAction = crudAction;
 		this.student = student;
@@ -51,7 +52,7 @@ public class StudentEditView extends EditView {
 		mathematik2.setTitle("Mathematik 2");
 		coursePanel = new CheckboxPanel<Course>(List.of(mathematik1, mathematik2), List.of(mathematik1));
 
-		saveButton.addActionListener(e -> saveStudent());
+		flowActionButton.addActionListener(e -> saveStudent());
 		deleteButton.addActionListener(e -> deleteStudent());
 
 		addLabel("Name", true);

@@ -13,10 +13,11 @@ import net.miginfocom.swing.MigLayout;
 @SuppressWarnings("serial")
 public abstract class EditView extends View {
 
-	protected JButton saveButton;
+	protected JButton flowActionButton;
 	protected JButton deleteButton;
 	private JButton exitButton;
 	private CrudAction crudAction;
+	private FlowAction flowAction;
 
 	/**
 	 * Create a new details view.
@@ -26,12 +27,13 @@ public abstract class EditView extends View {
 	 *                 or editing an entity (if used for creating an entity, the
 	 *                 delete button is hidden)
 	 */
-	protected EditView(String title, CrudAction crudAction) {
+	protected EditView(String title, CrudAction crudAction, FlowAction flowAction) {
 		super(title);
 		this.crudAction = crudAction;
+		this.flowAction = flowAction;
 		setLayout(new MigLayout("fillx, insets 10"));
 
-		saveButton = new JButton("Speichern");
+		flowActionButton = new JButton(flowAction == FlowAction.NEXT ? "Weiter" : "Speichern");
 		deleteButton = new JButton("Löschen");
 		exitButton = new JButton("Abbrechen");
 
@@ -92,11 +94,11 @@ public abstract class EditView extends View {
 	protected void addActionButtons() {
 		JPanel buttonsPanel = new JPanel();
 		buttonsPanel.setLayout(new MigLayout("fillx, insets 0"));
-		if (crudAction == CrudAction.UPDATE) {
+		if (crudAction == CrudAction.UPDATE && flowAction == FlowAction.SAVE) {
 			buttonsPanel.add(deleteButton, "align left, sizegroup btn");
 		}
 		buttonsPanel.add(exitButton, "align right, split, sizegroup btn");
-		buttonsPanel.add(saveButton, "align right, sizegroup btn");
+		buttonsPanel.add(flowActionButton, "align right, sizegroup btn");
 		add(buttonsPanel, "gaptop 10, growx");
 	}
 }

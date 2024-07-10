@@ -63,7 +63,7 @@ public class App {
 		coursesMenuItem.addActionListener(action -> courseTableView.open());
 		masterDataMenu.add(coursesMenuItem);
 
-		studentsTableView.open(this);
+		courseTableView.open(this);
 	}
 
 	/**
