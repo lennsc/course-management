@@ -26,20 +26,21 @@ public class CourseTypeSelectionView extends EditView {
 		
 		flowActionButton.addActionListener(e -> {
 			CourseType selectedCourseType = CourseType.valueOf(((KeyValueItem) courseTypeComboBox.getSelectedItem()).key());
+			CourseEditView view;
+			
 			if (selectedCourseType == CourseType.ADVANCED) {
 				Advanced advancedCourse = CourseManagementFactory.eINSTANCE.createAdvanced();
 				advancedCourse.setId(course.getId());
 				advancedCourse.setTitle(course.getTitle());
 				advancedCourse.setCourseType(CourseType.ADVANCED);
-				CourseEditView view = new CourseEditView(repository, advancedCourse, crudAction);
-				view.openDialog();
-				close();
+				view = new CourseEditView(repository, advancedCourse, crudAction);
 			} else {
 				course.setCourseType(CourseType.INTRODUCTORY);
-				CourseEditView courseEditView = new CourseEditView(repository, course, crudAction);
-				courseEditView.openDialog();
-				close();
-			}			
+				view = new CourseEditView(repository, course, crudAction);
+			}
+			
+			close();
+			view.openDialog();
 		});
 		
 		addLabel("Kurstyp");
