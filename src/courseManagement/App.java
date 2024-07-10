@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import courseManagement.course.CourseTableView;
 import courseManagement.students.StudentTableView;
 
 import javax.swing.JMenuBar;
@@ -53,10 +54,14 @@ public class App {
 		menuBar.add(masterDataMenu);
 
 		StudentTableView studentsTableView = new StudentTableView();
-
 		JMenuItem studentsMenuItem = new JMenuItem("Studenten");
 		studentsMenuItem.addActionListener(action -> studentsTableView.open());
 		masterDataMenu.add(studentsMenuItem);
+		
+		CourseTableView courseTableView = new CourseTableView();
+		JMenuItem coursesMenuItem = new JMenuItem("Kurse");
+		coursesMenuItem.addActionListener(action -> courseTableView.open());
+		masterDataMenu.add(coursesMenuItem);
 
 		studentsTableView.open(this);
 	}

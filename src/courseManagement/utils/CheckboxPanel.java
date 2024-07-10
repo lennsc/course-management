@@ -11,6 +11,7 @@ import net.miginfocom.swing.MigLayout;
 @SuppressWarnings("serial")
 public class CheckboxPanel<T extends Labeled> extends JPanel {
 
+	private List<T> options;
 	private List<T> selectedOptions;
 
 	/**
@@ -29,9 +30,28 @@ public class CheckboxPanel<T extends Labeled> extends JPanel {
 	 * @param selectedOptions Initially selected options
 	 */
 	public CheckboxPanel(List<T> options, List<T> selectedOptions) {
+		this.options = new ArrayList<>(options);
 		this.selectedOptions = new ArrayList<>(selectedOptions);
 		setLayout(new MigLayout("insets 0"));
+		renderCheckboxes();
+	}
 
+	/**
+	 * Get current selected options.
+	 * 
+	 * @return List of options
+	 */
+	public List<T> getSelectedOptions() {
+		return selectedOptions;
+	}
+	
+	public void setSelectedOptions(List<T> selectedOptions) {
+		removeAll();
+		this.selectedOptions = selectedOptions;
+		renderCheckboxes();
+	}
+	
+	private void renderCheckboxes() {
 		for (T option : options) {
 			JCheckBox checkBox = new JCheckBox(option.getLabel());
 			checkBox.addActionListener(e -> {
@@ -46,14 +66,5 @@ public class CheckboxPanel<T extends Labeled> extends JPanel {
 				checkBox.setSelected(true);
 			}
 		}
-	}
-
-	/**
-	 * Get current selected options.
-	 * 
-	 * @return List of options
-	 */
-	public List<T> getSelectedOptions() {
-		return selectedOptions;
 	}
 }
