@@ -62,5 +62,4 @@ public abstract class View extends JPanel {
 
 		App.INSTANCE.openDialog(dialog);
 	}
-
 }
