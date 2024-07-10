@@ -25,7 +25,7 @@ public class CourseTypeSelectionView extends EditView {
 	 * @param crudAction
 	 */
 	protected CourseTypeSelectionView(GenericRepository<Course> repository, Course course, CrudAction crudAction) {
-		super("Kurstyp auswählen", crudAction, FlowAction.NEXT);
+		super("Kurs " + (crudAction == CrudAction.CREATE ? "hinzufügen" : "bearbeiten"), crudAction, FlowAction.NEXT);
 		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(KeyValueItemUtil.getKeyValueItems(CourseType.values()));
 		courseTypeComboBox.setSelectedItem(
 				new KeyValueItem(CourseType.INTRODUCTORY.getName(), CourseType.INTRODUCTORY.getLiteral()));
