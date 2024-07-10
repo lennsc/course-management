@@ -80,7 +80,7 @@
     <eOperations name="getLabel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
-    <eLiterals name="INTRODUCTORY"/>
-    <eLiterals name="ADVANCED" value="1"/>
+    <eLiterals name="INTRODUCTORY" literal="Grundlagen"/>
+    <eLiterals name="ADVANCED" value="1" literal="Fortgeschritten"/>
   </eClassifiers>
 </ecore:EPackage>

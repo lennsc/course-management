@@ -26,7 +26,7 @@ public enum CourseType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	INTRODUCTORY(0, "INTRODUCTORY", "INTRODUCTORY"),
+	INTRODUCTORY(0, "INTRODUCTORY", "Grundlagen"),
 
 	/**
 	 * The '<em><b>ADVANCED</b></em>' literal object.
@@ -36,14 +36,14 @@ public enum CourseType implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	ADVANCED(1, "ADVANCED", "ADVANCED");
+	ADVANCED(1, "ADVANCED", "Fortgeschritten");
 
 	/**
 	 * The '<em><b>INTRODUCTORY</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #INTRODUCTORY
-	 * @model
+	 * @model literal="Grundlagen"
 	 * @generated
 	 * @ordered
 	 */
@@ -54,7 +54,7 @@ public enum CourseType implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #ADVANCED
-	 * @model
+	 * @model literal="Fortgeschritten"
 	 * @generated
 	 * @ordered
 	 */

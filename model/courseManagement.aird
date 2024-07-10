@@ -5,7 +5,7 @@
     <semanticResources>courseManagement.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_PlgVEDkzEe-u9Nb0eoULWw">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PpjuoDkzEe-u9Nb0eoULWw" name="courseManagement" repPath="#_PoD50DkzEe-u9Nb0eoULWw" changeId="1720616987449">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_PpjuoDkzEe-u9Nb0eoULWw" name="courseManagement" repPath="#_PoD50DkzEe-u9Nb0eoULWw" changeId="1720633141852">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="courseManagement.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -865,7 +865,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" uid="_ciR1wD0eEe-iFLuWaXJOeA" name="courseType : CourseType = INTRODUCTORY" tooltipText="">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_ciR1wD0eEe-iFLuWaXJOeA" name="courseType : CourseType = Grundlagen" tooltipText="">
         <target xmi:type="ecore:EAttribute" href="courseManagement.ecore#//Course/courseType"/>
         <semanticElements xmi:type="ecore:EAttribute" href="courseManagement.ecore#//Course/courseType"/>
         <ownedStyle xmi:type="diagram:BundledImage" uid="_eqam9T0eEe-iFLuWaXJOeA" labelAlignment="LEFT">
