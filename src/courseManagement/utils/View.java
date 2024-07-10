@@ -15,7 +15,7 @@ public abstract class View extends JPanel {
 	/**
 	 * Create a new view.
 	 * 
-	 * @param title Title of the view
+	 * @param title Title of the new view
 	 */
 	protected View(String title) {
 		this.title = title;
