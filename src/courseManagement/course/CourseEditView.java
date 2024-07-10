@@ -47,7 +47,7 @@ public class CourseEditView extends EditView {
 		addLabel("Name", true);
 		add(labelField);
 
-		if (course.getCourseType() == CourseType.ADVANCED) {
+		if (course instanceof Advanced) {
 			List<Course> prereqs = ((Advanced) course).getPrereqs();
 			prereqsCheckboxPanel.setSelectedOptions(getAllCourseDependencies(prereqs));
 			addLabel("Voraussetzungen");

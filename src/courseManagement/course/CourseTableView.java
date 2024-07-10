@@ -37,7 +37,7 @@ public class CourseTableView extends TableView<Course> {
 			Course course = courses.get(i);
 			dataVector[i][0] = course.getTitle();
 			dataVector[i][1] = course.getCourseType().getLiteral();
-			if (course.getCourseType() == CourseType.ADVANCED) {
+			if (course instanceof Advanced) {
 				dataVector[i][2] = getPrereqsLabels((Advanced) course);
 			} else {
 				dataVector[i][2] = "";

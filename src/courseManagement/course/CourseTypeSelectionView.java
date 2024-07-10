@@ -8,6 +8,7 @@ import courseManagement.Advanced;
 import courseManagement.Course;
 import courseManagement.CourseManagementFactory;
 import courseManagement.CourseType;
+import courseManagement.Introductory;
 import courseManagement.utils.CrudAction;
 import courseManagement.utils.EditView;
 import courseManagement.utils.FlowAction;
@@ -35,8 +36,11 @@ public class CourseTypeSelectionView extends EditView {
 				advancedCourse.setCourseType(CourseType.ADVANCED);
 				view = new CourseEditView(repository, advancedCourse, crudAction);
 			} else {
-				course.setCourseType(CourseType.INTRODUCTORY);
-				view = new CourseEditView(repository, course, crudAction);
+				Introductory introductoryCourse = CourseManagementFactory.eINSTANCE.createIntroductory();
+				introductoryCourse.setId(course.getId());
+				introductoryCourse.setTitle(course.getTitle());
+				introductoryCourse.setCourseType(CourseType.INTRODUCTORY);
+				view = new CourseEditView(repository, introductoryCourse, crudAction);
 			}
 			
 			close();
