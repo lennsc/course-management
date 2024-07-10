@@ -1,6 +1,5 @@
 package courseManagement.students;
 
-import java.util.Arrays;
 import java.util.List;
 
 import javax.swing.JComboBox;
@@ -16,6 +15,7 @@ import courseManagement.utils.CrudAction;
 import courseManagement.utils.EditView;
 import courseManagement.utils.FlowAction;
 import courseManagement.utils.KeyValueItem;
+import courseManagement.utils.KeyValueItemUtil;
 import courseManagement.utils.GenericRepository;
 
 @SuppressWarnings("serial")
@@ -43,7 +43,7 @@ public class StudentEditView extends EditView {
 		this.student = student;
 
 		nameField = new JTextField(student.getName());
-		semesterComboBox = new JComboBox<>(getSemesterKeyValueItems());
+		semesterComboBox = new JComboBox<>(KeyValueItemUtil.getKeyValueItems(Semester.values()));
 		semesterComboBox.setSelectedItem(new KeyValueItem(student.getSemester().getName(), student.getSemester().getLiteral()));
 
 		Introductory mathematik1 = CourseManagementFactory.eINSTANCE.createIntroductory();
@@ -90,16 +90,5 @@ public class StudentEditView extends EditView {
 		// certainly wants to delete this entity
 		repository.delete(student);
 		close();
-	}
-
-	/**
-	 * Convert list of Semester values to KeyValueItems.
-	 * 
-	 * @return Array of KeyValueItems
-	 * @implNote Returned array can be directly inserted in JComboBox constructor
-	 */
-	private KeyValueItem[] getSemesterKeyValueItems() {
-		return Arrays.asList(Semester.values()).stream()
-				.map(value -> new KeyValueItem(value.getName(), value.getLiteral())).toArray(KeyValueItem[]::new);
 	}
 }

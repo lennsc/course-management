@@ -1,7 +1,5 @@
 package courseManagement.course;
 
-import java.util.Arrays;
-
 import javax.swing.JComboBox;
 
 import courseManagement.Advanced;
@@ -14,6 +12,7 @@ import courseManagement.utils.EditView;
 import courseManagement.utils.FlowAction;
 import courseManagement.utils.GenericRepository;
 import courseManagement.utils.KeyValueItem;
+import courseManagement.utils.KeyValueItemUtil;
 
 @SuppressWarnings("serial")
 public class CourseTypeSelectionView extends EditView {
@@ -27,7 +26,7 @@ public class CourseTypeSelectionView extends EditView {
 	 */
 	protected CourseTypeSelectionView(GenericRepository<Course> repository, Course course, CrudAction crudAction) {
 		super("Kurstypen auswählen", crudAction, FlowAction.NEXT);
-		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(getCourseTypeKeyValueItems());
+		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(KeyValueItemUtil.getKeyValueItems(CourseType.values()));
 		courseTypeComboBox.setSelectedItem(
 				new KeyValueItem(CourseType.INTRODUCTORY.getName(), CourseType.INTRODUCTORY.getLiteral()));
 
@@ -57,16 +56,5 @@ public class CourseTypeSelectionView extends EditView {
 		addLabel("Kurstyp");
 		add(courseTypeComboBox);
 		addActionButtons();
-	}
-
-	/**
-	 * Create KeyValueItem objects for each value of the CourseType enum.
-	 * 
-	 * @implNote Intended as options list for JComboBox
-	 * @return Array of CourseType values
-	 */
-	private KeyValueItem[] getCourseTypeKeyValueItems() {
-		return Arrays.asList(CourseType.values()).stream()
-				.map(value -> new KeyValueItem(value.getName(), value.getLiteral())).toArray(KeyValueItem[]::new);
 	}
 }
