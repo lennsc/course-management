@@ -17,18 +17,25 @@ import courseManagement.utils.KeyValueItem;
 
 @SuppressWarnings("serial")
 public class CourseTypeSelectionView extends EditView {
-	
-	private JComboBox<KeyValueItem> courseTypeComboBox;
 
+	/**
+	 * Create a new course type selection view.
+	 * 
+	 * @param repository Reference to the repository from the course table view.
+	 * @param course
+	 * @param crudAction
+	 */
 	protected CourseTypeSelectionView(GenericRepository<Course> repository, Course course, CrudAction crudAction) {
 		super("Kurstypen auswählen", crudAction, FlowAction.NEXT);
-		courseTypeComboBox = new JComboBox<>(getCourseTypeKeyValueItems());
-		courseTypeComboBox.setSelectedItem(new KeyValueItem(CourseType.INTRODUCTORY.getName(), CourseType.INTRODUCTORY.getLiteral()));
-		
+		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(getCourseTypeKeyValueItems());
+		courseTypeComboBox.setSelectedItem(
+				new KeyValueItem(CourseType.INTRODUCTORY.getName(), CourseType.INTRODUCTORY.getLiteral()));
+
 		flowActionButton.addActionListener(e -> {
-			CourseType selectedCourseType = CourseType.valueOf(((KeyValueItem) courseTypeComboBox.getSelectedItem()).key());
+			CourseType selectedCourseType = CourseType
+					.valueOf(((KeyValueItem) courseTypeComboBox.getSelectedItem()).key());
 			CourseEditView view;
-			
+
 			if (selectedCourseType == CourseType.ADVANCED) {
 				Advanced advancedCourse = CourseManagementFactory.eINSTANCE.createAdvanced();
 				advancedCourse.setId(course.getId());
@@ -42,16 +49,22 @@ public class CourseTypeSelectionView extends EditView {
 				introductoryCourse.setCourseType(CourseType.INTRODUCTORY);
 				view = new CourseEditView(repository, introductoryCourse, crudAction);
 			}
-			
+
 			close();
 			view.openDialog();
 		});
-		
+
 		addLabel("Kurstyp");
 		add(courseTypeComboBox);
 		addActionButtons();
 	}
-	
+
+	/**
+	 * Create KeyValueItem objects for each value of the CourseType enum.
+	 * 
+	 * @implNote Intended as options list for JComboBox
+	 * @return Array of CourseType values
+	 */
 	private KeyValueItem[] getCourseTypeKeyValueItems() {
 		return Arrays.asList(CourseType.values()).stream()
 				.map(value -> new KeyValueItem(value.getName(), value.getLiteral())).toArray(KeyValueItem[]::new);
