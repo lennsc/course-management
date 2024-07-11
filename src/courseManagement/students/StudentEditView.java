@@ -1,16 +1,10 @@
 package courseManagement.students;
 
-import java.util.List;
-
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import courseManagement.CourseManagementFactory;
-import courseManagement.Introductory;
 import courseManagement.Semester;
 import courseManagement.Student;
-import courseManagement.Course;
-import courseManagement.utils.CheckboxPanel;
 import courseManagement.utils.CrudAction;
 import courseManagement.utils.EditView;
 import courseManagement.utils.FlowAction;
@@ -23,7 +17,6 @@ public class StudentEditView extends EditView {
 
 	private JTextField nameField;
 	private JComboBox<KeyValueItem> semesterComboBox;
-	private CheckboxPanel<Course> coursePanel;
 	private GenericRepository<Student> repository;
 	private Student student;
 	private CrudAction crudAction;
@@ -46,12 +39,6 @@ public class StudentEditView extends EditView {
 		semesterComboBox = new JComboBox<>(KeyValueItemUtil.getKeyValueItems(Semester.values()));
 		semesterComboBox.setSelectedItem(new KeyValueItem(student.getSemester().getName(), student.getSemester().getLiteral()));
 
-		Introductory mathematik1 = CourseManagementFactory.eINSTANCE.createIntroductory();
-		mathematik1.setTitle("Mathematik 1");
-		Introductory mathematik2 = CourseManagementFactory.eINSTANCE.createIntroductory();
-		mathematik2.setTitle("Mathematik 2");
-		coursePanel = new CheckboxPanel<Course>(List.of(mathematik1, mathematik2), List.of(mathematik1));
-
 		flowActionButton.addActionListener(e -> saveStudent());
 		deleteButton.addActionListener(e -> deleteStudent());
 
@@ -59,8 +46,6 @@ public class StudentEditView extends EditView {
 		add(nameField);
 		addLabel("Semester");
 		add(semesterComboBox);
-		addLabel("Kurse");
-		add(coursePanel);
 		addActionButtons();
 	}
 
