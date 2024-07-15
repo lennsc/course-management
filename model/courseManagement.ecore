@@ -61,6 +61,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="title" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="courseType" eType="#//CourseType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="evaluation" eType="#//Evaluation"
+        defaultValueLiteral="ONE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Advanced" eSuperTypes="#//Course">
     <eStructuralFeatures xsi:type="ecore:EReference" name="prereqs" lowerBound="1"
@@ -82,5 +84,12 @@
   <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
     <eLiterals name="INTRODUCTORY"/>
     <eLiterals name="ADVANCED" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Evaluation">
+    <eLiterals name="ONE"/>
+    <eLiterals name="TWO" value="1"/>
+    <eLiterals name="THREE" value="2"/>
+    <eLiterals name="FOUR" value="3"/>
+    <eLiterals name="FIVE" value="4"/>
   </eClassifiers>
 </ecore:EPackage>

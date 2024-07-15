@@ -2,6 +2,8 @@
  */
 package courseManagement;
 
+import java.awt.Component;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Result</b></em>'.

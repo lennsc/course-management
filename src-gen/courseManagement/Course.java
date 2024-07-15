@@ -14,6 +14,7 @@ package courseManagement;
  *   <li>{@link courseManagement.Course#getTitle <em>Title</em>}</li>
  *   <li>{@link courseManagement.Course#getId <em>Id</em>}</li>
  *   <li>{@link courseManagement.Course#getCourseType <em>Course Type</em>}</li>
+ *   <li>{@link courseManagement.Course#getEvaluation <em>Evaluation</em>}</li>
  * </ul>
  *
  * @see courseManagement.CourseManagementPackage#getCourse()
@@ -97,6 +98,32 @@ public interface Course extends Identifiable, Labeled {
 	 * @generated
 	 */
 	void setCourseType(CourseType value);
+
+	/**
+	 * Returns the value of the '<em><b>Evaluation</b></em>' attribute.
+	 * The default value is <code>"ONE"</code>.
+	 * The literals are from the enumeration {@link courseManagement.Evaluation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Evaluation</em>' attribute.
+	 * @see courseManagement.Evaluation
+	 * @see #setEvaluation(Evaluation)
+	 * @see courseManagement.CourseManagementPackage#getCourse_Evaluation()
+	 * @model default="ONE"
+	 * @generated
+	 */
+	Evaluation getEvaluation();
+
+	/**
+	 * Sets the value of the '{@link courseManagement.Course#getEvaluation <em>Evaluation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Evaluation</em>' attribute.
+	 * @see courseManagement.Evaluation
+	 * @see #getEvaluation()
+	 * @generated
+	 */
+	void setEvaluation(Evaluation value);
 
 	/**
 	 * <!-- begin-user-doc -->

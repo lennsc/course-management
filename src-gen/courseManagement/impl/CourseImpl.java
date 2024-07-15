@@ -6,6 +6,7 @@ import courseManagement.Course;
 import courseManagement.CourseManagementPackage;
 
 import courseManagement.CourseType;
+import courseManagement.Evaluation;
 import courseManagement.Labeled;
 import java.lang.reflect.InvocationTargetException;
 
@@ -29,6 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link courseManagement.impl.CourseImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link courseManagement.impl.CourseImpl#getId <em>Id</em>}</li>
  *   <li>{@link courseManagement.impl.CourseImpl#getCourseType <em>Course Type</em>}</li>
+ *   <li>{@link courseManagement.impl.CourseImpl#getEvaluation <em>Evaluation</em>}</li>
  * </ul>
  *
  * @generated
@@ -93,6 +95,26 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 	 * @ordered
 	 */
 	protected CourseType courseType = COURSE_TYPE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEvaluation() <em>Evaluation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvaluation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Evaluation EVALUATION_EDEFAULT = Evaluation.ONE;
+
+	/**
+	 * The cached value of the '{@link #getEvaluation() <em>Evaluation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEvaluation()
+	 * @generated
+	 * @ordered
+	 */
+	protected Evaluation evaluation = EVALUATION_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -201,6 +223,30 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 	 * @generated
 	 */
 	@Override
+	public Evaluation getEvaluation() {
+		return evaluation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setEvaluation(Evaluation newEvaluation) {
+		Evaluation oldEvaluation = evaluation;
+		evaluation = newEvaluation == null ? EVALUATION_EDEFAULT : newEvaluation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CourseManagementPackage.COURSE__EVALUATION,
+					oldEvaluation, evaluation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public boolean isElective() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -221,6 +267,8 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 			return getId();
 		case CourseManagementPackage.COURSE__COURSE_TYPE:
 			return getCourseType();
+		case CourseManagementPackage.COURSE__EVALUATION:
+			return getEvaluation();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -241,6 +289,9 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 			return;
 		case CourseManagementPackage.COURSE__COURSE_TYPE:
 			setCourseType((CourseType) newValue);
+			return;
+		case CourseManagementPackage.COURSE__EVALUATION:
+			setEvaluation((Evaluation) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -263,6 +314,9 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 		case CourseManagementPackage.COURSE__COURSE_TYPE:
 			setCourseType(COURSE_TYPE_EDEFAULT);
 			return;
+		case CourseManagementPackage.COURSE__EVALUATION:
+			setEvaluation(EVALUATION_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -281,6 +335,8 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 			return id != ID_EDEFAULT;
 		case CourseManagementPackage.COURSE__COURSE_TYPE:
 			return courseType != COURSE_TYPE_EDEFAULT;
+		case CourseManagementPackage.COURSE__EVALUATION:
+			return evaluation != EVALUATION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -336,6 +392,8 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 		result.append(id);
 		result.append(", courseType: ");
 		result.append(courseType);
+		result.append(", evaluation: ");
+		result.append(evaluation);
 		result.append(')');
 		return result.toString();
 	}

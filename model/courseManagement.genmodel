@@ -29,6 +29,13 @@
       <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//CourseType/INTRODUCTORY"/>
       <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//CourseType/ADVANCED"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="courseManagement.ecore#//Evaluation">
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Evaluation/ONE"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Evaluation/TWO"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Evaluation/THREE"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Evaluation/FOUR"/>
+      <genEnumLiterals ecoreEnumLiteral="courseManagement.ecore#//Evaluation/FIVE"/>
+    </genEnums>
     <genClasses ecoreClass="courseManagement.ecore#//ServiceFacade">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/results"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference courseManagement.ecore#//ServiceFacade/students"/>
@@ -59,6 +66,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/title"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/courseType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute courseManagement.ecore#//Course/evaluation"/>
       <genOperations ecoreOperation="courseManagement.ecore#//Course/isElective"/>
       <genOperations ecoreOperation="courseManagement.ecore#//Course/getLabel"/>
     </genClasses>

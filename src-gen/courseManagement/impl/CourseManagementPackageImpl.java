@@ -8,6 +8,7 @@ import courseManagement.CourseManagementFactory;
 import courseManagement.CourseManagementPackage;
 import courseManagement.CourseSet;
 import courseManagement.CourseType;
+import courseManagement.Evaluation;
 import courseManagement.Grade;
 import courseManagement.Identifiable;
 import courseManagement.Introductory;
@@ -124,6 +125,13 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 	 * @generated
 	 */
 	private EEnum courseTypeEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum evaluationEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -455,6 +463,16 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCourse_Evaluation() {
+		return (EAttribute) courseEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EOperation getCourse__IsElective() {
 		return courseEClass.getEOperations().get(0);
 	}
@@ -615,6 +633,16 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 	 * @generated
 	 */
 	@Override
+	public EEnum getEvaluation() {
+		return evaluationEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CourseManagementFactory getCourseManagementFactory() {
 		return (CourseManagementFactory) getEFactoryInstance();
 	}
@@ -669,6 +697,7 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		createEAttribute(courseEClass, COURSE__TITLE);
 		createEAttribute(courseEClass, COURSE__ID);
 		createEAttribute(courseEClass, COURSE__COURSE_TYPE);
+		createEAttribute(courseEClass, COURSE__EVALUATION);
 		createEOperation(courseEClass, COURSE___IS_ELECTIVE);
 		createEOperation(courseEClass, COURSE___GET_LABEL);
 
@@ -692,6 +721,7 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		gradeEEnum = createEEnum(GRADE);
 		semesterEEnum = createEEnum(SEMESTER);
 		courseTypeEEnum = createEEnum(COURSE_TYPE);
+		evaluationEEnum = createEEnum(EVALUATION);
 	}
 
 	/**
@@ -797,6 +827,8 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCourse_CourseType(), this.getCourseType(), "courseType", null, 0, 1, Course.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCourse_Evaluation(), this.getEvaluation(), "evaluation", "ONE", 0, 1, Course.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getCourse__IsElective(), ecorePackage.getEBoolean(), "isElective", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -850,6 +882,13 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		initEEnum(courseTypeEEnum, CourseType.class, "CourseType");
 		addEEnumLiteral(courseTypeEEnum, CourseType.INTRODUCTORY);
 		addEEnumLiteral(courseTypeEEnum, CourseType.ADVANCED);
+
+		initEEnum(evaluationEEnum, Evaluation.class, "Evaluation");
+		addEEnumLiteral(evaluationEEnum, Evaluation.ONE);
+		addEEnumLiteral(evaluationEEnum, Evaluation.TWO);
+		addEEnumLiteral(evaluationEEnum, Evaluation.THREE);
+		addEEnumLiteral(evaluationEEnum, Evaluation.FOUR);
+		addEEnumLiteral(evaluationEEnum, Evaluation.FIVE);
 
 		// Create resource
 		createResource(eNS_URI);

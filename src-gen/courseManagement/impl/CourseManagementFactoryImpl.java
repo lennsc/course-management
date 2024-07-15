@@ -90,6 +90,8 @@ public class CourseManagementFactoryImpl extends EFactoryImpl implements CourseM
 			return createSemesterFromString(eDataType, initialValue);
 		case CourseManagementPackage.COURSE_TYPE:
 			return createCourseTypeFromString(eDataType, initialValue);
+		case CourseManagementPackage.EVALUATION:
+			return createEvaluationFromString(eDataType, initialValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -109,6 +111,8 @@ public class CourseManagementFactoryImpl extends EFactoryImpl implements CourseM
 			return convertSemesterToString(eDataType, instanceValue);
 		case CourseManagementPackage.COURSE_TYPE:
 			return convertCourseTypeToString(eDataType, instanceValue);
+		case CourseManagementPackage.EVALUATION:
+			return convertEvaluationToString(eDataType, instanceValue);
 		default:
 			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -254,6 +258,28 @@ public class CourseManagementFactoryImpl extends EFactoryImpl implements CourseM
 	 * @generated
 	 */
 	public String convertCourseTypeToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Evaluation createEvaluationFromString(EDataType eDataType, String initialValue) {
+		Evaluation result = Evaluation.get(initialValue);
+		if (result == null)
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertEvaluationToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

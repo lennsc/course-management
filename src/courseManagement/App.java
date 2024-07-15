@@ -1,6 +1,8 @@
 package courseManagement;
 
 import java.awt.EventQueue;
+import java.awt.Desktop.Action;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -8,6 +10,8 @@ import javax.swing.JPanel;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import courseManagement.course.CourseTableView;
+import courseManagement.completion.CompletionTableView;
+import courseManagement.course.CourseEvaluationTableView;
 import courseManagement.students.StudentTableView;
 
 import javax.swing.JMenuBar;
@@ -52,7 +56,9 @@ public class App {
 
 		JMenu masterDataMenu = new JMenu("Stammdaten");
 		menuBar.add(masterDataMenu);
-
+		JMenu flowActionMenu= new JMenu("Laufende Verwaltung");
+		menuBar.add(flowActionMenu);
+		
 		StudentTableView studentsTableView = new StudentTableView();
 		JMenuItem studentsMenuItem = new JMenuItem("Studenten");
 		studentsMenuItem.addActionListener(action -> studentsTableView.open());
@@ -62,6 +68,16 @@ public class App {
 		JMenuItem coursesMenuItem = new JMenuItem("Kurse");
 		coursesMenuItem.addActionListener(action -> courseTableView.open());
 		masterDataMenu.add(coursesMenuItem);
+		
+		CourseEvaluationTableView courseEvaluationTableView= new courseManagement.course.CourseEvaluationTableView();
+		JMenuItem evaluationMenuItem= new JMenuItem("Kursbewertung");
+		evaluationMenuItem.addActionListener(action -> courseEvaluationTableView.open());
+		flowActionMenu.add(evaluationMenuItem);
+
+		CompletionTableView completionTableView = new CompletionTableView();
+		JMenuItem completionMenuItem = new JMenuItem("Kurskomplettierung");
+		completionMenuItem.addActionListener(action -> completionTableView.open());
+		flowActionMenu.add(completionMenuItem);
 
 		courseTableView.open(this);
 	}

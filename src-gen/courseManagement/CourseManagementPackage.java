@@ -443,13 +443,22 @@ public interface CourseManagementPackage extends EPackage {
 	int COURSE__COURSE_TYPE = IDENTIFIABLE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Evaluation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COURSE__EVALUATION = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>Course</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COURSE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 3;
+	int COURSE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Get Id</em>' operation.
@@ -523,6 +532,15 @@ public interface CourseManagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ADVANCED__COURSE_TYPE = COURSE__COURSE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Evaluation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ADVANCED__EVALUATION = COURSE__EVALUATION;
 
 	/**
 	 * The feature id for the '<em><b>Prereqs</b></em>' reference list.
@@ -614,6 +632,15 @@ public interface CourseManagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int INTRODUCTORY__COURSE_TYPE = COURSE__COURSE_TYPE;
+
+	/**
+	 * The feature id for the '<em><b>Evaluation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTRODUCTORY__EVALUATION = COURSE__EVALUATION;
 
 	/**
 	 * The number of structural features of the '<em>Introductory</em>' class.
@@ -790,6 +817,16 @@ public interface CourseManagementPackage extends EPackage {
 	 * @generated
 	 */
 	int COURSE_TYPE = 12;
+
+	/**
+	 * The meta object id for the '{@link courseManagement.Evaluation <em>Evaluation</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see courseManagement.Evaluation
+	 * @see courseManagement.impl.CourseManagementPackageImpl#getEvaluation()
+	 * @generated
+	 */
+	int EVALUATION = 13;
 
 	/**
 	 * Returns the meta object for class '{@link courseManagement.ServiceFacade <em>Service Facade</em>}'.
@@ -1072,6 +1109,17 @@ public interface CourseManagementPackage extends EPackage {
 	EAttribute getCourse_CourseType();
 
 	/**
+	 * Returns the meta object for the attribute '{@link courseManagement.Course#getEvaluation <em>Evaluation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Evaluation</em>'.
+	 * @see courseManagement.Course#getEvaluation()
+	 * @see #getCourse()
+	 * @generated
+	 */
+	EAttribute getCourse_Evaluation();
+
+	/**
 	 * Returns the meta object for the '{@link courseManagement.Course#isElective() <em>Is Elective</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1233,6 +1281,16 @@ public interface CourseManagementPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getCourseType();
+
+	/**
+	 * Returns the meta object for enum '{@link courseManagement.Evaluation <em>Evaluation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Evaluation</em>'.
+	 * @see courseManagement.Evaluation
+	 * @generated
+	 */
+	EEnum getEvaluation();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1476,6 +1534,14 @@ public interface CourseManagementPackage extends EPackage {
 		EAttribute COURSE__COURSE_TYPE = eINSTANCE.getCourse_CourseType();
 
 		/**
+		 * The meta object literal for the '<em><b>Evaluation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COURSE__EVALUATION = eINSTANCE.getCourse_Evaluation();
+
+		/**
 		 * The meta object literal for the '<em><b>Is Elective</b></em>' operation.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1618,6 +1684,16 @@ public interface CourseManagementPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum COURSE_TYPE = eINSTANCE.getCourseType();
+
+		/**
+		 * The meta object literal for the '{@link courseManagement.Evaluation <em>Evaluation</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see courseManagement.Evaluation
+		 * @see courseManagement.impl.CourseManagementPackageImpl#getEvaluation()
+		 * @generated
+		 */
+		EEnum EVALUATION = eINSTANCE.getEvaluation();
 
 	}
 
