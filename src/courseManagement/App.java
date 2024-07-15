@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import courseManagement.course.CourseTableView;
+import courseManagement.program.ProgramTableView;
 import courseManagement.students.StudentTableView;
 
 import javax.swing.JMenuBar;
@@ -58,12 +59,18 @@ public class App {
 		studentsMenuItem.addActionListener(action -> studentsTableView.open());
 		masterDataMenu.add(studentsMenuItem);
 		
+		ProgramTableView programTableView = new ProgramTableView();
+		JMenuItem programMenuItem = new JMenuItem("Programme");
+		programMenuItem.addActionListener(action -> programTableView.open());
+		masterDataMenu.add(programMenuItem);
+		
 		CourseTableView courseTableView = new CourseTableView();
 		JMenuItem coursesMenuItem = new JMenuItem("Kurse");
 		coursesMenuItem.addActionListener(action -> courseTableView.open());
 		masterDataMenu.add(coursesMenuItem);
 
 		courseTableView.open(this);
+		
 	}
 
 	/**
