@@ -63,6 +63,7 @@ public class App {
 		JMenuItem programMenuItem = new JMenuItem("Programme");
 		programMenuItem.addActionListener(action -> programTableView.open());
 		masterDataMenu.add(programMenuItem);
+	
 		
 		CourseTableView courseTableView = new CourseTableView();
 		JMenuItem coursesMenuItem = new JMenuItem("Kurse");
