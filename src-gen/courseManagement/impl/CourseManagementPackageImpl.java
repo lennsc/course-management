@@ -8,6 +8,7 @@ import courseManagement.CourseManagementFactory;
 import courseManagement.CourseManagementPackage;
 import courseManagement.CourseSet;
 import courseManagement.CourseType;
+import courseManagement.Evaluation;
 import courseManagement.Grade;
 import courseManagement.Identifiable;
 import courseManagement.Introductory;
@@ -103,6 +104,13 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 	 * @generated
 	 */
 	private EClass labeledEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass evaluationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -585,6 +593,56 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 	 * @generated
 	 */
 	@Override
+	public EClass getEvaluation() {
+		return evaluationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEvaluation_Course() {
+		return (EReference) evaluationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getEvaluation_Student() {
+		return (EReference) evaluationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEvaluation_Value() {
+		return (EAttribute) evaluationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getEvaluation_Id() {
+		return (EAttribute) evaluationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getGrade() {
 		return gradeEEnum;
 	}
@@ -688,6 +746,12 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		labeledEClass = createEClass(LABELED);
 		createEOperation(labeledEClass, LABELED___GET_LABEL);
 
+		evaluationEClass = createEClass(EVALUATION);
+		createEReference(evaluationEClass, EVALUATION__COURSE);
+		createEReference(evaluationEClass, EVALUATION__STUDENT);
+		createEAttribute(evaluationEClass, EVALUATION__VALUE);
+		createEAttribute(evaluationEClass, EVALUATION__ID);
+
 		// Create enums
 		gradeEEnum = createEEnum(GRADE);
 		semesterEEnum = createEEnum(SEMESTER);
@@ -733,6 +797,7 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		advancedEClass.getESuperTypes().add(this.getCourse());
 		introductoryEClass.getESuperTypes().add(this.getCourse());
 		courseSetEClass.getESuperTypes().add(this.getIdentifiable());
+		evaluationEClass.getESuperTypes().add(this.getIdentifiable());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(serviceFacadeEClass, ServiceFacade.class, "ServiceFacade", !IS_ABSTRACT, !IS_INTERFACE,
@@ -751,7 +816,7 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(resultEClass, Result.class, "Result", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getResult_Value(), this.getGrade(), "value", "F", 1, 1, Result.class, !IS_TRANSIENT,
+		initEAttribute(getResult_Value(), this.getGrade(), "value", "A", 1, 1, Result.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getResult_Key(), this.getCourse(), null, "key", null, 1, 1, Result.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
@@ -829,6 +894,19 @@ public class CourseManagementPackageImpl extends EPackageImpl implements CourseM
 		initEClass(labeledEClass, Labeled.class, "Labeled", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEOperation(getLabeled__GetLabel(), ecorePackage.getEString(), "getLabel", 0, 1, IS_UNIQUE, IS_ORDERED);
+
+		initEClass(evaluationEClass, Evaluation.class, "Evaluation", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getEvaluation_Course(), this.getCourse(), null, "course", null, 1, 1, Evaluation.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEvaluation_Student(), this.getStudent(), null, "student", null, 1, 1, Evaluation.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEvaluation_Value(), this.getGrade(), "value", "A", 1, 1, Evaluation.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getEvaluation_Id(), ecorePackage.getEInt(), "id", null, 0, 1, Evaluation.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(gradeEEnum, Grade.class, "Grade");

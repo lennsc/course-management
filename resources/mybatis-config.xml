@@ -3,6 +3,9 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+  <typeHandlers>
+    <typeHandler handler="courseManagement.utils.EListTypeHandler" javaType="org.eclipse.emf.common.util.EList"/>
+  </typeHandlers>
   <objectFactory type="courseManagement.utils.EMFObjectFactory" />
   <environments default="development">
     <environment id="development">
@@ -16,8 +19,9 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="mappers/StudentMapper.xml"/>
-    <mapper resource="mappers/CourseMapper.xml" />
-    <!-- Weitere Mapper-Klassen können hier hinzugefügt werden -->
+  	<mapper resource="courseManagement/student/StudentMapper.xml" />
+  	<mapper resource="courseManagement/course/CourseMapper.xml" />
+  	<mapper resource="courseManagement/evaluation/EvaluationMapper.xml" />
+  	<mapper resource="courseManagement/program/ProgramMapper.xml" />
   </mappers>
 </configuration>

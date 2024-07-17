@@ -23,7 +23,7 @@ package courseManagement;
 public interface Result extends Identifiable {
 	/**
 	 * Returns the value of the '<em><b>Value</b></em>' attribute.
-	 * The default value is <code>"F"</code>.
+	 * The default value is <code>"A"</code>.
 	 * The literals are from the enumeration {@link courseManagement.Grade}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31,7 +31,7 @@ public interface Result extends Identifiable {
 	 * @see courseManagement.Grade
 	 * @see #setValue(Grade)
 	 * @see courseManagement.CourseManagementPackage#getResult_Value()
-	 * @model default="F" required="true"
+	 * @model default="A" required="true"
 	 * @generated
 	 */
 	Grade getValue();

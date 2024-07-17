@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="courseManagement.student.StudentMapper">
+
+	<select id="selectStudent" parameterType="int" resultMap="studentResultMap">
+		SELECT * FROM Student 
+		WHERE Id = #{id}
+	</select>
+
+	<select id="selectAllStudents" resultMap="studentResultMap">
+        SELECT * FROM Student
+    </select>
+
+	<resultMap id="studentResultMap" type="courseManagement.Student">
+		<id property="id" column="Id" />
+		<result property="name" column="Name" />
+		<result property="semester" column="Semester" />
+		<collection property="transcript" ofType="courseManagement.Result" column="id" select="selectResultsByStudentId" javaType="org.eclipse.emf.common.util.EList" typeHandler="courseManagement.utils.EListTypeHandler"></collection>
+	</resultMap>
+	
+	<select id="selectResultsByStudentId" parameterType="int" resultMap="resultResultMap">
+		SELECT * FROM Result
+		WHERE StudentId = #{id}
+	</select>
+	
+	<resultMap id="resultResultMap" type="courseManagement.Result">
+		<id property="id" column="Id" />
+		<result property="value" column="Value" javaType="courseManagement.Grade" />
+		<association property="key" column="CourseId" javaType="courseManagement.Course" select="courseManagement.course.CourseMapper.selectCourseById" />
+	</resultMap>
+	
+	<insert id="insertResult">
+		INSERT INTO Result (StudentId, CourseId, Value) VALUES (#{studentId}, #{courseId}, #{value})
+	</insert>
+	
+	<delete id="deleteResults" parameterType="int">
+		DELETE FROM Result WHERE StudentId = #{studentId}
+	</delete>
+
+</mapper>

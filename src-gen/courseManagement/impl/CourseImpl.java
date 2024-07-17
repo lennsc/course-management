@@ -4,7 +4,6 @@ package courseManagement.impl;
 
 import courseManagement.Course;
 import courseManagement.CourseManagementPackage;
-
 import courseManagement.CourseType;
 import courseManagement.Labeled;
 import java.lang.reflect.InvocationTargetException;
@@ -139,17 +138,6 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns the value of the title attribute.
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getLabel() {
-		return title;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -202,6 +190,18 @@ public abstract class CourseImpl extends MinimalEObjectImpl.Container implements
 	 */
 	@Override
 	public boolean isElective() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getLabel() {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();

@@ -85,6 +85,15 @@ public interface CourseManagementFactory extends EFactory {
 	CourseSet createCourseSet();
 
 	/**
+	 * Returns a new object of class '<em>Evaluation</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Evaluation</em>'.
+	 * @generated
+	 */
+	Evaluation createEvaluation();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

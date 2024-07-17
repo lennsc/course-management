@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="courseManagement.program.ProgramMapper">
+
+    <resultMap id="programResultMap" type="courseManagement.Program">
+        <id property="id" column="Id" />
+        <result property="label" column="Label" />
+    </resultMap>
+
+    <select id="selectAllPrograms" resultMap="programResultMap">
+        SELECT * FROM Program
+    </select>
+    
+    <select id="selectProgram" parameterType="int" resultMap="programResultMap">
+        SELECT * FROM Program WHERE Id = #{id}
+    </select>
+
+    <select id="selectAllCourses" parameterType="int" resultType="java.lang.Integer">
+	    SELECT CourseId FROM Program_Course WHERE ProgramId = #{id}
+	</select>
+
+    <select id="selectAllRequiredCourses" parameterType="int" resultType="java.lang.Integer">
+	    SELECT CourseId FROM Program_RequiredCourse WHERE ProgramId = #{id}
+	</select>
+    
+    <insert id="insertProgram">
+        INSERT INTO Program (Label) VALUES (#{label})
+    </insert>
+    
+    <insert id="insertCourse">
+    	INSERT INTO Program_Course (ProgramId, CourseId) VALUES (#{programId}, #{courseId})
+    </insert>
+    
+    <insert id="insertRequiredCourse">
+    	INSERT INTO Program_RequiredCourse (ProgramId, CourseId) VALUES (#{programId}, #{courseId})
+    </insert>
+    
+    <update id="updateProgram">
+        UPDATE Program
+        SET Label = #{label}
+        WHERE Id = #{id}
+    </update>
+    
+    <delete id="deleteProgram" parameterType="int">
+        DELETE FROM Program WHERE Id = #{id}
+    </delete>
+    
+    <delete id="deleteCourses" parameterType="int">
+        DELETE FROM Program_Course WHERE ProgramId = #{programId}
+    </delete>
+    
+    <delete id="deleteRequiredCourses" parameterType="int">
+        DELETE FROM Program_RequiredCourse WHERE ProgramId = #{programId}
+    </delete>
+
+</mapper>

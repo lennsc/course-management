@@ -164,6 +164,15 @@ public class CourseManagementSwitch<T> extends Switch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case CourseManagementPackage.EVALUATION: {
+			Evaluation evaluation = (Evaluation) theEObject;
+			T result = caseEvaluation(evaluation);
+			if (result == null)
+				result = caseIdentifiable(evaluation);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		default:
 			return defaultCase(theEObject);
 		}
@@ -316,6 +325,21 @@ public class CourseManagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseLabeled(Labeled object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Evaluation</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Evaluation</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvaluation(Evaluation object) {
 		return null;
 	}
 

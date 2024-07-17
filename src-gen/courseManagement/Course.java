@@ -44,14 +44,6 @@ public interface Course extends Identifiable, Labeled {
 	void setTitle(String value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @model kind="operation"
-	 * @generated
-	 */
-	String getLabel();
-
-	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,5 +97,13 @@ public interface Course extends Identifiable, Labeled {
 	 * @generated
 	 */
 	boolean isElective();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model kind="operation"
+	 * @generated
+	 */
+	String getLabel();
 
 } // Course

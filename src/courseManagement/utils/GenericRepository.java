@@ -1,66 +1,58 @@
 package courseManagement.utils;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import courseManagement.Identifiable;
 
-public class GenericRepository<T extends Identifiable> implements DataAccess<T> {
+public class GenericRepository<T extends Identifiable> implements DataReadAccess<T>, DataWriteAccess<T> {
 
 	private GenericDao<T> genericDao;
 	private List<T> entities;
+	private boolean initialized;
 
 	/**
-	 * Initialize repository and view (by running the update method).
+	 * Initialize repository and view (by running the update method) with a custom
+	 * DAO.
 	 * 
-	 * @param entityClass
-	 * @param update
+	 * @param customDao
+	 * @param updateConsumer
 	 */
-	public GenericRepository(Class<T> entityClass, Consumer<List<T>> updateConsumer) {
-		genericDao = new GenericDao<T>(entityClass);
-		entities = Collections.synchronizedList(genericDao.findAll());
-		
-		updateConsumer.accept(entities);
+	public GenericRepository(GenericDao<T> customDao) {
+		this.genericDao = customDao;
+		initialized = false;
+	}
 
-		genericDao.addObserver(new DaoObserver<T>() {
-
-			@Override
-			public void onEntityInserted(T entity) {
-				entities.add(entity);
-				updateConsumer.accept(entities);
-			}
-
-			@Override
-			public void onEntityUpdated(T entity) {
-				for (int i = 0; i < entities.size(); i++) {
-					T currentEntity = entities.get(i);
-					if (currentEntity.getId() == entity.getId()) {
-						entities.set(i, entity);
-						break;
-					}
+	/**
+	 * Common method to initialize repository and register observer for update
+	 * consumer.
+	 * 
+	 * @param updateConsumer
+	 */
+	public void initializeRepository(Consumer<List<T>> updateConsumer) {
+		if (!initialized) {
+			entities = new ArrayList<>(genericDao.findAll());
+			updateConsumer.accept(entities);
+			
+			genericDao.addObserver(new DaoObserver<T>() {
+				@Override
+				public void onChange() {
+					entities = new ArrayList<>(genericDao.findAll());
+					updateConsumer.accept(entities);
 				}
-				updateConsumer.accept(entities);
-			}
-
-			@Override
-			public void onEntityDeleted(T entity) {
-				for (int i = 0; i < entities.size(); i++) {
-					T currentEntity = entities.get(i);
-					if (currentEntity.getId() == entity.getId()) {
-						entities.remove(i);
-						break;
-					}
-				}
-				updateConsumer.accept(entities);
-			}
-		});
+			});
+			
+			initialized = true;
+		} else {
+			throw new UnsupportedOperationException("The repository is already initialized.");
+		}
 	}
 
 	@Override
 	public T findById(int id) {
 		return genericDao.findById(id);
 	}
-	
+
 	/**
 	 * Find entity by index in repository store.
 	 * 

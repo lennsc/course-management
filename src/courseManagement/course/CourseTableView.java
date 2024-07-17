@@ -5,16 +5,18 @@ import java.util.List;
 import courseManagement.Advanced;
 import courseManagement.Course;
 import courseManagement.CourseManagementFactory;
-import courseManagement.CourseType;
 import courseManagement.utils.CrudAction;
 import courseManagement.utils.TableView;
 
 @SuppressWarnings("serial")
 public class CourseTableView extends TableView<Course> {
 
+	/**
+	 * Create a new course table view.
+	 */
 	public CourseTableView() {
-		super(Course.class, "Kurse", List.of("Titel", "Kurstyp", "Voraussetzungen"));
-		
+		super(new CourseDao(), "Kurse", List.of("Titel", "Kurstyp", "Voraussetzungen"));
+
 		addButton.addActionListener(e -> {
 			Course course = CourseManagementFactory.eINSTANCE.createIntroductory();
 			CourseTypeSelectionView view = new CourseTypeSelectionView(repository, course, CrudAction.CREATE);
@@ -22,6 +24,9 @@ public class CourseTableView extends TableView<Course> {
 		});
 	}
 
+	/**
+	 * Handle table row click
+	 */
 	@Override
 	protected void onClickRowAction() {
 		int rowIndex = table.getSelectedRow();
@@ -30,9 +35,14 @@ public class CourseTableView extends TableView<Course> {
 		courseEditView.openDialog();
 	}
 
+	/**
+	 * Handle updating table contents on repository action
+	 * 
+	 * @param courses List of updated courses from repository
+	 */
 	@Override
 	protected void updateTable(List<Course> courses) {
-		Object[][] dataVector = new Object[courses.size()][2];
+		Object[][] dataVector = new Object[courses.size()][3];
 		for (int i = 0; i < courses.size(); i++) {
 			Course course = courses.get(i);
 			dataVector[i][0] = course.getTitle();
@@ -45,14 +55,20 @@ public class CourseTableView extends TableView<Course> {
 		}
 		setDataVector(dataVector);
 	}
-	
+
+	/**
+	 * Get labels of the courses stored in the prereqs list of an advanced course.
+	 * 
+	 * @param advanced
+	 * @return String containing a comma-separated list of course labels
+	 */
 	private String getPrereqsLabels(Advanced advanced) {
 		StringBuilder courseNames = new StringBuilder();
 		String prefix = "";
 		for (Course prereq : advanced.getPrereqs()) {
 			courseNames.append(prefix);
 			prefix = ", ";
-			courseNames.append(prereq.getLabel());
+			courseNames.append(prereq.getTitle());
 		}
 		return courseNames.toString();
 	}
