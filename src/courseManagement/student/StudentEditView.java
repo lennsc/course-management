@@ -1,4 +1,4 @@
-package courseManagement.students;
+package courseManagement.student;
 
 import javax.swing.JComboBox;
 import javax.swing.JTextField;

@@ -11,6 +11,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -54,6 +55,7 @@ public class CourseSetImpl extends MinimalEObjectImpl.Container implements Cours
 	 * @ordered
 	 */
 	protected static final int ID_EDEFAULT = 0;
+
 	/**
 	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->

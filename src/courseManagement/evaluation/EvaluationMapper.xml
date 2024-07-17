@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="courseManagement.evaluation.EvaluationMapper">
+
+	<resultMap id="evaluationResultMap" type="courseManagement.Evaluation">
+		<id property="id" column="Id" />
+		<result property="value" column="Value" />
+		<association property="student" column="StudentId" javaType="courseManagement.Student" select="courseManagement.student.StudentMapper.selectStudent" />
+		<association property="course" column="CourseId" javaType="courseManagement.Course" select="courseManagement.course.CourseMapper.selectCourseById" />
+	</resultMap>
+	
+	<select id="selectAllEvaluations" resultMap="evaluationResultMap">
+		SELECT * FROM Evaluation
+	</select>
+	
+	<select id="selectEvaluation" parameterType="int" resultMap="evaluationResultMap">
+		SELECT * FROM Evaluation WHERE Id = #{id}
+	</select>
+	
+	<insert id="insertEvaluation">
+		INSERT INTO Evaluation (StudentId, CourseId, Value)
+		VALUES (#{studentId}, #{courseId}, #{value})
+	</insert>
+	
+	<update id="updateEvaluation">
+		UPDATE Evaluation
+		SET StudentId = #{studentId}, CourseId = #{courseId}, Value = #{value}
+		WHERE Id = #{id}
+	</update>
+	
+	<delete id="deleteEvaluation" parameterType="int">
+		DELETE FROM Evaluation WHERE Id = #{id}
+	</delete>
+	
+</mapper>

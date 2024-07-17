@@ -39,7 +39,7 @@ public class ResultImpl extends MinimalEObjectImpl.Container implements Result {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Grade VALUE_EDEFAULT = Grade.F;
+	protected static final Grade VALUE_EDEFAULT = Grade.A;
 
 	/**
 	 * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.

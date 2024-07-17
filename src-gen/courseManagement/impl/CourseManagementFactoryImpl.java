@@ -71,6 +71,8 @@ public class CourseManagementFactoryImpl extends EFactoryImpl implements CourseM
 			return createIntroductory();
 		case CourseManagementPackage.COURSE_SET:
 			return createCourseSet();
+		case CourseManagementPackage.EVALUATION:
+			return createEvaluation();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -189,6 +191,17 @@ public class CourseManagementFactoryImpl extends EFactoryImpl implements CourseM
 	public CourseSet createCourseSet() {
 		CourseSetImpl courseSet = new CourseSetImpl();
 		return courseSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Evaluation createEvaluation() {
+		EvaluationImpl evaluation = new EvaluationImpl();
+		return evaluation;
 	}
 
 	/**

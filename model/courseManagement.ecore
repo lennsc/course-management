@@ -14,12 +14,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Result" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//Grade"
-        defaultValueLiteral="F"/>
+        defaultValueLiteral="A"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="key" lowerBound="1" eType="#//Course"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Grade">
-    <eLiterals name="A"/>
+    <eLiterals name="A" literal="A"/>
     <eLiterals name="B" value="1"/>
     <eLiterals name="C" value="2"/>
     <eLiterals name="D" value="3"/>
@@ -82,5 +82,14 @@
   <eClassifiers xsi:type="ecore:EEnum" name="CourseType">
     <eLiterals name="INTRODUCTORY" literal="Grundlagen"/>
     <eLiterals name="ADVANCED" value="1" literal="Fortgeschritten"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Evaluation" eSuperTypes="#//Identifiable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="course" lowerBound="1"
+        eType="#//Course"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="student" lowerBound="1"
+        eType="#//Student"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="#//Grade"
+        defaultValueLiteral="A"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
 </ecore:EPackage>

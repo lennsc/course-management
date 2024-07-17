@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="courseManagement.course.CourseMapper">
+
+    <!-- Select all Courses -->
+    <select id="selectAllCourses" resultMap="courseResultMap">
+        SELECT * FROM Course
+    </select>
+
+    <!-- Select Course by ID -->
+    <select id="selectCourseById" parameterType="int" resultMap="courseResultMap">
+        SELECT * FROM Course WHERE Id = #{id}
+    </select>
+
+    <!-- Result Map for Course -->
+    <resultMap id="courseResultMap" type="courseManagement.Course">
+        <id property="id" column="Id"/>
+        <result property="title" column="Title"/>
+        <result property="courseType" column="CourseType"/>
+
+        <!-- Discriminator to handle different Course types -->
+        <discriminator javaType="String" column="CourseType">
+            <case value="INTRODUCTORY" resultType="courseManagement.Introductory"/>
+            <case value="ADVANCED" resultMap="advancedCourseResultMap"/>
+        </discriminator>
+    </resultMap>
+
+    <!-- Result Map for Advanced Course with Prerequisites -->
+    <resultMap id="advancedCourseResultMap" type="courseManagement.Advanced" extends="courseResultMap">
+        <collection property="prereqs" ofType="courseManagement.Course" column="id" select="selectPrereqsByCourseId" javaType="org.eclipse.emf.common.util.EList" />
+    </resultMap>
+
+    <!-- Select Prerequisites by Course ID -->
+    <select id="selectPrereqsByCourseId" parameterType="int" resultMap="courseResultMap">
+        SELECT c.* FROM Course c
+        INNER JOIN Course_Prereq ap ON c.id = ap.PrereqId
+        WHERE ap.CourseId = #{id}
+    </select>
+    
+    <!-- Insert new Course -->
+    <insert id="insertCourse" parameterType="courseManagement.Course">
+        INSERT INTO Course (Title, CourseType)
+        VALUES (#{title}, #{courseType})
+        <selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT last_insert_rowid() AS id
+        </selectKey>
+    </insert>
+
+    <!-- Update Course -->
+    <update id="updateCourse" parameterType="courseManagement.Course">
+        UPDATE Course
+        SET Title = #{title}
+        WHERE Id = #{id}
+    </update>
+
+    <!-- Insert Prerequisite for Course -->
+    <insert id="insertCoursePrereq">
+        INSERT INTO Course_Prereq (CourseId, PrereqId)
+        VALUES (#{courseId}, #{prereqId})
+    </insert>
+
+    <!-- Delete Prerequisite for Course -->
+    <delete id="deleteCoursePrereq">
+        DELETE FROM Course_Prereq WHERE CourseId = #{courseId} AND PrereqId = #{prereqId}
+    </delete>
+
+    <!-- Delete all Prerequisites for a Course -->
+    <delete id="deleteCoursePrereqsByCourseId" parameterType="int">
+        DELETE FROM Course_Prereq WHERE CourseId = #{id}
+    </delete>
+    
+    <!-- Check if Course Prerequisite Exists -->
+    <select id="coursePrereqExists" resultType="boolean">
+        SELECT EXISTS (
+            SELECT 1 FROM Course_Prereq WHERE CourseId = #{courseId} AND PrereqId = #{prereqId}
+        ) AS value
+    </select>
+    
+    <!-- Delete eines Kurses -->
+    <delete id="deleteCourse" parameterType="int">
+        DELETE FROM Course WHERE Id = #{courseId}
+    </delete>
+
+</mapper>

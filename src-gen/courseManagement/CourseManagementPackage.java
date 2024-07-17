@@ -123,16 +123,6 @@ public interface CourseManagementPackage extends EPackage {
 	int SERVICE_FACADE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link courseManagement.impl.ResultImpl <em>Result</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see courseManagement.impl.ResultImpl
-	 * @see courseManagement.impl.CourseManagementPackageImpl#getResult()
-	 * @generated
-	 */
-	int RESULT = 1;
-
-	/**
 	 * The meta object id for the '{@link courseManagement.Identifiable <em>Identifiable</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -168,6 +158,16 @@ public interface CourseManagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int IDENTIFIABLE_OPERATION_COUNT = 1;
+
+	/**
+	 * The meta object id for the '{@link courseManagement.impl.ResultImpl <em>Result</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see courseManagement.impl.ResultImpl
+	 * @see courseManagement.impl.CourseManagementPackageImpl#getResult()
+	 * @generated
+	 */
+	int RESULT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -762,6 +762,79 @@ public interface CourseManagementPackage extends EPackage {
 	int LABELED_OPERATION_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link courseManagement.impl.EvaluationImpl <em>Evaluation</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see courseManagement.impl.EvaluationImpl
+	 * @see courseManagement.impl.CourseManagementPackageImpl#getEvaluation()
+	 * @generated
+	 */
+	int EVALUATION = 10;
+
+	/**
+	 * The feature id for the '<em><b>Course</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION__COURSE = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Student</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION__STUDENT = IDENTIFIABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION__VALUE = IDENTIFIABLE_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION__ID = IDENTIFIABLE_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Evaluation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Get Id</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION___GET_ID = IDENTIFIABLE___GET_ID;
+
+	/**
+	 * The number of operations of the '<em>Evaluation</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVALUATION_OPERATION_COUNT = IDENTIFIABLE_OPERATION_COUNT + 0;
+
+	/**
 	 * The meta object id for the '{@link courseManagement.Grade <em>Grade</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -769,7 +842,7 @@ public interface CourseManagementPackage extends EPackage {
 	 * @see courseManagement.impl.CourseManagementPackageImpl#getGrade()
 	 * @generated
 	 */
-	int GRADE = 10;
+	int GRADE = 11;
 
 	/**
 	 * The meta object id for the '{@link courseManagement.Semester <em>Semester</em>}' enum.
@@ -779,7 +852,7 @@ public interface CourseManagementPackage extends EPackage {
 	 * @see courseManagement.impl.CourseManagementPackageImpl#getSemester()
 	 * @generated
 	 */
-	int SEMESTER = 11;
+	int SEMESTER = 12;
 
 	/**
 	 * The meta object id for the '{@link courseManagement.CourseType <em>Course Type</em>}' enum.
@@ -789,7 +862,7 @@ public interface CourseManagementPackage extends EPackage {
 	 * @see courseManagement.impl.CourseManagementPackageImpl#getCourseType()
 	 * @generated
 	 */
-	int COURSE_TYPE = 12;
+	int COURSE_TYPE = 13;
 
 	/**
 	 * Returns the meta object for class '{@link courseManagement.ServiceFacade <em>Service Facade</em>}'.
@@ -1205,6 +1278,60 @@ public interface CourseManagementPackage extends EPackage {
 	EOperation getLabeled__GetLabel();
 
 	/**
+	 * Returns the meta object for class '{@link courseManagement.Evaluation <em>Evaluation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Evaluation</em>'.
+	 * @see courseManagement.Evaluation
+	 * @generated
+	 */
+	EClass getEvaluation();
+
+	/**
+	 * Returns the meta object for the reference '{@link courseManagement.Evaluation#getCourse <em>Course</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Course</em>'.
+	 * @see courseManagement.Evaluation#getCourse()
+	 * @see #getEvaluation()
+	 * @generated
+	 */
+	EReference getEvaluation_Course();
+
+	/**
+	 * Returns the meta object for the reference '{@link courseManagement.Evaluation#getStudent <em>Student</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Student</em>'.
+	 * @see courseManagement.Evaluation#getStudent()
+	 * @see #getEvaluation()
+	 * @generated
+	 */
+	EReference getEvaluation_Student();
+
+	/**
+	 * Returns the meta object for the attribute '{@link courseManagement.Evaluation#getValue <em>Value</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Value</em>'.
+	 * @see courseManagement.Evaluation#getValue()
+	 * @see #getEvaluation()
+	 * @generated
+	 */
+	EAttribute getEvaluation_Value();
+
+	/**
+	 * Returns the meta object for the attribute '{@link courseManagement.Evaluation#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see courseManagement.Evaluation#getId()
+	 * @see #getEvaluation()
+	 * @generated
+	 */
+	EAttribute getEvaluation_Id();
+
+	/**
 	 * Returns the meta object for enum '{@link courseManagement.Grade <em>Grade</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1588,6 +1715,48 @@ public interface CourseManagementPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation LABELED___GET_LABEL = eINSTANCE.getLabeled__GetLabel();
+
+		/**
+		 * The meta object literal for the '{@link courseManagement.impl.EvaluationImpl <em>Evaluation</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see courseManagement.impl.EvaluationImpl
+		 * @see courseManagement.impl.CourseManagementPackageImpl#getEvaluation()
+		 * @generated
+		 */
+		EClass EVALUATION = eINSTANCE.getEvaluation();
+
+		/**
+		 * The meta object literal for the '<em><b>Course</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVALUATION__COURSE = eINSTANCE.getEvaluation_Course();
+
+		/**
+		 * The meta object literal for the '<em><b>Student</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVALUATION__STUDENT = eINSTANCE.getEvaluation_Student();
+
+		/**
+		 * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVALUATION__VALUE = eINSTANCE.getEvaluation_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute EVALUATION__ID = eINSTANCE.getEvaluation_Id();
 
 		/**
 		 * The meta object literal for the '{@link courseManagement.Grade <em>Grade</em>}' enum.

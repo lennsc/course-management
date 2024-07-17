@@ -1,4 +1,4 @@
-package courseManagement.students;
+package courseManagement.student;
 
 import courseManagement.CourseManagementFactory;
 import courseManagement.Student;
@@ -14,7 +14,7 @@ public class StudentTableView extends TableView<Student> {
 	 * Create a new students table view.
 	 */
 	public StudentTableView() {
-		super(Student.class, "Studenten", List.of("Name", "Semester"));
+		super(new StudentDao(), "Studenten", List.of("Name", "Semester"));
 
 		addButton.addActionListener(e -> {
 			Student student = CourseManagementFactory.eINSTANCE.createStudent();

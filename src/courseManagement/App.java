@@ -7,8 +7,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import courseManagement.completion.CompletionTableView;
 import courseManagement.course.CourseTableView;
-import courseManagement.students.StudentTableView;
+import courseManagement.evaluation.EvaluationTableView;
+import courseManagement.program.ProgramTableView;
+import courseManagement.student.StudentTableView;
 
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
@@ -52,18 +55,47 @@ public class App {
 
 		JMenu masterDataMenu = new JMenu("Stammdaten");
 		menuBar.add(masterDataMenu);
+		
+		JMenu flowActionMenu= new JMenu("Laufende Verwaltung");
+		menuBar.add(flowActionMenu);
 
-		StudentTableView studentsTableView = new StudentTableView();
 		JMenuItem studentsMenuItem = new JMenuItem("Studenten");
-		studentsMenuItem.addActionListener(action -> studentsTableView.open());
+		studentsMenuItem.addActionListener(action -> {
+			StudentTableView studentsTableView = new StudentTableView();
+			studentsTableView.open();
+		});
 		masterDataMenu.add(studentsMenuItem);
 		
-		CourseTableView courseTableView = new CourseTableView();
 		JMenuItem coursesMenuItem = new JMenuItem("Kurse");
-		coursesMenuItem.addActionListener(action -> courseTableView.open());
+		coursesMenuItem.addActionListener(action -> {
+			CourseTableView courseTableView = new CourseTableView();
+			courseTableView.open();
+		});
 		masterDataMenu.add(coursesMenuItem);
+		
+		JMenuItem programsMenuItem = new JMenuItem("Programme");
+		programsMenuItem.addActionListener(action -> {
+			ProgramTableView view = new ProgramTableView();
+			view.open();
+		});
+		masterDataMenu.add(programsMenuItem);
+		
+		JMenuItem completionMenuItem = new JMenuItem("Kurskomplettierung");
+		completionMenuItem.addActionListener(action -> {
+			CompletionTableView completionTableView = new CompletionTableView();
+			completionTableView.open();
+		});
+		flowActionMenu.add(completionMenuItem);
+		
+		JMenuItem evaluationMenuItem = new JMenuItem("Kursbewertung");
+		evaluationMenuItem.addActionListener(action -> {
+			EvaluationTableView view = new EvaluationTableView();
+			view.open();
+		});
+		flowActionMenu.add(evaluationMenuItem);
 
-		courseTableView.open(this);
+		StudentTableView studentsTableView = new StudentTableView();
+		studentsTableView.open(this);
 	}
 
 	/**

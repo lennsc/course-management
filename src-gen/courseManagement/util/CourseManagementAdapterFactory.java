@@ -117,6 +117,11 @@ public class CourseManagementAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseEvaluation(Evaluation object) {
+			return createEvaluationAdapter();
+		}
+
+		@Override
 		public Adapter defaultCase(EObject object) {
 			return createEObjectAdapter();
 		}
@@ -272,6 +277,20 @@ public class CourseManagementAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createLabeledAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link courseManagement.Evaluation <em>Evaluation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see courseManagement.Evaluation
+	 * @generated
+	 */
+	public Adapter createEvaluationAdapter() {
 		return null;
 	}
 

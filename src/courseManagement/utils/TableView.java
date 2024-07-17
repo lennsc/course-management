@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import courseManagement.App;
 import courseManagement.Identifiable;
 import net.miginfocom.swing.MigLayout;
 
@@ -24,11 +25,11 @@ public abstract class TableView<T extends Identifiable> extends View {
 	/**
 	 * Create a new table view.
 	 * 
-	 * @param entityClass  Entity to create the view for
+	 * @param customDao    Entity DAO
 	 * @param title        Title of the view
 	 * @param tableColumns List of column names
 	 */
-	protected TableView(Class<T> entityClass, String title, List<String> tableColumns) {
+	protected TableView(GenericDao<T> customDao, String title, List<String> tableColumns) {
 		super(title);
 		setLayout(new MigLayout("fill", "", "[grow][]"));
 
@@ -36,11 +37,17 @@ public abstract class TableView<T extends Identifiable> extends View {
 		table.setShowGrid(true);
 		columnIdentifiers = tableColumns.toArray();
 		initializeTableModel();
-		repository = new GenericRepository<T>(entityClass, this::updateTable);
+		repository = new GenericRepository<T>(customDao);
 		addButton = new JButton("Hinzufügen");
 		
 		add(new JScrollPane(table), "grow, wrap");
 		add(addButton, "right");
+	}
+	
+	@Override
+	public void open(App app) {
+		repository.initializeRepository(this::updateTable);
+		super.open(app);
 	}
 
 	/**

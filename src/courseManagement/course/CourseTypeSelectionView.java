@@ -22,11 +22,14 @@ public class CourseTypeSelectionView extends EditView {
 	 * 
 	 * @param repository Reference to the repository from the course table view.
 	 * @param course
-	 * @param crudAction
+	 * @param crudAction Enum value indicating whether this form is used for
+	 *                   creating or editing a course instance
 	 */
 	protected CourseTypeSelectionView(GenericRepository<Course> repository, Course course, CrudAction crudAction) {
 		super("Kurs " + (crudAction == CrudAction.CREATE ? "hinzufügen" : "bearbeiten"), crudAction, FlowAction.NEXT);
-		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(KeyValueItemUtil.getKeyValueItems(CourseType.values()));
+
+		JComboBox<KeyValueItem> courseTypeComboBox = new JComboBox<>(
+				KeyValueItemUtil.getKeyValueItems(CourseType.values()));
 		courseTypeComboBox.setSelectedItem(
 				new KeyValueItem(CourseType.INTRODUCTORY.getName(), CourseType.INTRODUCTORY.getLiteral()));
 

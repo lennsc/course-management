@@ -10,6 +10,7 @@ import courseManagement.Semester;
 import courseManagement.Student;
 
 import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -192,17 +193,6 @@ public class StudentImpl extends MinimalEObjectImpl.Container implements Student
 
 	/**
 	 * <!-- begin-user-doc -->
-	 * Returns the value of the name attribute.
-	 * <!-- end-user-doc -->
-	 * @generated NOT
-	 */
-	@Override
-	public String getLabel() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -306,6 +296,18 @@ public class StudentImpl extends MinimalEObjectImpl.Container implements Student
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, CourseManagementPackage.STUDENT__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getLabel() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
