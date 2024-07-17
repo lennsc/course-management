@@ -26,14 +26,23 @@
     
     <insert id="insertProgram">
         INSERT INTO Program (Label) VALUES (#{label})
+        <selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT last_insert_rowid() AS id
+        </selectKey>
     </insert>
     
     <insert id="insertCourse">
     	INSERT INTO Program_Course (ProgramId, CourseId) VALUES (#{programId}, #{courseId})
+    	<selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT last_insert_rowid() AS id
+        </selectKey>
     </insert>
     
     <insert id="insertRequiredCourse">
     	INSERT INTO Program_RequiredCourse (ProgramId, CourseId) VALUES (#{programId}, #{courseId})
+    	<selectKey keyProperty="id" order="AFTER" resultType="int">
+            SELECT last_insert_rowid() AS id
+        </selectKey>
     </insert>
     
     <update id="updateProgram">
